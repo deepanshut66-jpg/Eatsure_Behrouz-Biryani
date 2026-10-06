@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>EatSure UAE × Behrouz — Ecosystem Prototype V8</title>
+<style>
+:root{--purple:#6040bd;--purple2:#8a64e8;--lav:#f4efff;--red:#ef4538;--ink:#202127;--muted:#777581;--line:#e8e4ef;--bg:#f8f7fb;--white:#fff;--green:#12865c}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#ede9f3,#dad5e2);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--ink)}button,input{font:inherit}.stage{min-height:100vh;display:grid;place-items:center;padding:20px}.phone{width:min(438px,100%);height:min(920px,96vh);background:#151515;border-radius:42px;padding:8px;box-shadow:0 34px 100px rgba(38,28,57,.25)}.app{height:100%;background:var(--bg);border-radius:34px;overflow:hidden;position:relative}.screen{position:absolute;inset:0;display:none;overflow:auto;padding-bottom:92px}.screen.active{display:block}.status{height:38px;padding:10px 18px 0;display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;font-weight:850;background:linear-gradient(180deg,#f4edff,#f7f4fb)}
+.top{padding:0 16px 18px;background:linear-gradient(180deg,#f4edff 0%,#faf8ff 95%);border-bottom:1px solid #eee8f6}.location{display:flex;gap:10px;align-items:center;padding:7px 0 12px}.pin,.avatar{width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #d8cdf3;display:grid;place-items:center;color:var(--purple);font-weight:900}.loc{min-width:0}.loc b{display:block;max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15px}.loc span{font-size:10px;color:var(--muted)}.avatar{margin-left:auto}.delivery{display:flex;gap:8px;margin-bottom:13px}.chip{border:1px solid #d8cdf1;background:#fff;border-radius:9px;padding:7px 10px;font-size:10px;font-weight:800}.chip.p{background:#ede7fb;color:var(--purple)}.searchbar{height:48px;border-radius:12px;border:1px solid #d2cddd;background:#fff;display:flex;align-items:center;gap:10px;padding:0 13px;color:#8a8791;box-shadow:0 3px 9px rgba(43,28,69,.04);cursor:pointer}.content{padding:0 16px 25px}.section{margin-top:18px}.sectionHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.sectionHead h2{font-size:18px;margin:0}.link{border:0;background:none;color:var(--purple);font-size:11px;font-weight:850;cursor:pointer}.muted{color:var(--muted);font-size:10px;line-height:1.45}.hscroll{display:flex;gap:10px;overflow:auto;scrollbar-width:none;padding:2px 0 3px}.hscroll::-webkit-scrollbar{display:none}.resto{min-width:132px;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 6px 16px rgba(38,28,59,.05);cursor:pointer}.restoVisual{height:104px;display:grid;place-items:center;position:relative;overflow:hidden}.restoVisual:before{content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:#ffffff22;top:-60px;right:-45px}.foodIcon{font-size:58px;filter:drop-shadow(0 7px 8px #0003);z-index:1}.restoBadge{position:absolute;left:7px;bottom:7px;padding:4px 7px;border-radius:8px;background:#101014;color:#fff;font-size:8px;font-weight:800;z-index:2}.restoCopy{padding:9px}.restoCopy h3{font-size:11px;margin:0 0 3px}.restoCopy p{font-size:9px;line-height:1.35;color:var(--muted);margin:0}.brandLogo{font-weight:1000;letter-spacing:-.4px}.elite{background:linear-gradient(150deg,#7b43df,#501aa4);color:#fff;border-radius:20px;padding:15px;box-shadow:0 13px 26px #5526a53d;overflow:hidden;position:relative}.elite:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,#fff3,transparent 65%);left:-90px;top:-120px}.eliteTitle{font-size:24px;font-weight:1000;text-align:center}.eliteTitle span{color:#f5d66f}.eliteBox{position:relative;margin-top:9px;background:#ffffff1a;border:1px solid #ffffff26;border-radius:14px;padding:10px}.progress{height:8px;background:#381b71;border-radius:99px;overflow:hidden;margin:8px 0}.progress span{display:block;width:52%;height:100%;background:linear-gradient(90deg,#ffe77e,#f3c842)}.eliteBenefits{display:grid;grid-template-columns:1fr 1fr;gap:7px}.eliteBenefits div{background:#fff;color:#2b2440;border-radius:10px;padding:8px;text-align:center;font-size:9px;font-weight:850}.behFeature{border-radius:20px;padding:18px;background:radial-gradient(circle at 78% 20%,#4b3a20 0,transparent 28%),linear-gradient(120deg,#161410,#2c2419);color:#fff;position:relative;overflow:hidden;min-height:210px}.behFeature .kicker{color:#e1bb6a;font-size:10px;font-weight:900;letter-spacing:1.2px}.behFeature h2{font-size:28px;line-height:1.02;margin:10px 0 7px;max-width:250px}.behFeature p{font-size:11px;color:#ddd5c7;max-width:240px;line-height:1.45}.behBowl{position:absolute;right:-12px;bottom:-20px;width:170px;height:110px;border-radius:50% 50% 44% 44%;background:radial-gradient(circle at 50% 30%,#f7d67a 0 33%,#d8a34f 34% 47%,#6a452c 48% 60%,#2a1d15 61%);box-shadow:0 12px 25px #0008}.behBowl:before{content:"";position:absolute;width:115px;height:28px;border-radius:50%;background:repeating-linear-gradient(88deg,#f4da96 0 6px,#f0c971 7px 10px,#8c4930 11px 14px);left:28px;top:15px;transform:rotate(-6deg)}.btnrow{display:flex;gap:7px;margin-top:12px;position:relative;z-index:2}.btn{border:0;border-radius:11px;padding:10px 12px;font-size:10px;font-weight:900;cursor:pointer}.btn.gold{background:#d5ad5e;color:#15120d}.btn.ghost{background:#ffffff12;border:1px solid #ffffff2b;color:#fff}.missionGrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mission{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px;cursor:pointer}.mission b{display:block;font-size:11px;margin:4px 0}.mission span{font-size:9px;color:var(--muted)}.mission .mi{font-size:20px}.multiCard{background:#fff;border:1px solid var(--line);border-radius:17px;padding:13px}.multiLine{display:flex;align-items:center;gap:8px}.miniLogo{width:37px;height:37px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:9px;font-weight:1000}.multiLine .txt{flex:1}.multiLine h3{font-size:11px;margin:0}.multiLine p{font-size:9px;color:var(--muted);margin:2px 0 0}.arrow{color:var(--purple);font-weight:1000}.ecosystem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.brandBubble{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 5px;text-align:center;cursor:pointer}.brandBubble .ico{height:48px;border-radius:11px;display:grid;place-items:center;font-size:28px;margin-bottom:5px}.brandBubble span{display:block;font-size:8px;font-weight:850;line-height:1.15}.bottom{position:absolute;bottom:0;left:0;right:0;height:77px;background:#ffffffef;border-top:1px solid #e8e3ee;display:grid;grid-template-columns:repeat(5,1fr);backdrop-filter:blur(12px);z-index:50}.nav{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:8px;color:#77727e;cursor:pointer}.nav b{font-size:19px}.nav.active{color:var(--purple);font-weight:900}.nav.multiNav b{font-size:9px;line-height:1.0;padding:5px 6px;border:1px solid #d8cff0;border-radius:7px;color:var(--purple)}
+/* shared screens */
+.pageHead{position:sticky;top:0;z-index:20;background:#faf9fded;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:10px}.back{width:32px;height:32px;border:0;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:900;cursor:pointer}.pageHead h1{font-size:16px;margin:0}.pageHead small{font-size:9px;color:var(--muted);display:block}.listGrid{padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}.bigBrand{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer}.bigBrand .art{height:125px;display:grid;place-items:center;font-size:67px;position:relative;overflow:hidden}.bigBrand .art:after{content:"";position:absolute;inset:auto -30px -50px auto;width:120px;height:120px;border:22px solid #fff2;border-radius:50%}.bigBrand .body{padding:10px}.bigBrand .body h3{font-size:12px;margin:0}.bigBrand .body p{font-size:9px;color:var(--muted);margin:4px 0 0;line-height:1.35}
+/* brand page */
+.brandHero{padding:20px 16px 18px;color:#fff;min-height:270px;position:relative;overflow:hidden}.brandHero .brandBack{width:32px;height:32px;border:1px solid #ffffff35;background:#ffffff18;color:#fff;border-radius:10px;font-weight:900;cursor:pointer}.brandHero .logo{font-size:28px;font-weight:1000;margin-top:26px;letter-spacing:-.8px;position:relative;z-index:2}.brandHero .tagline{font-size:13px;font-weight:750;margin-top:6px;max-width:260px;line-height:1.35;position:relative;z-index:2}.brandHero .meta{font-size:9px;margin-top:10px;color:#ffffffc9;position:relative;z-index:2}.heroDish{position:absolute;right:-34px;bottom:-20px;width:210px;height:150px;border-radius:50%;display:grid;place-items:center;font-size:100px;transform:rotate(-8deg);background:#ffffff15;box-shadow:inset 0 0 0 1px #ffffff1f;filter:drop-shadow(0 16px 20px #0005)}.brandBody{padding:14px 16px 26px}.offer{border-radius:14px;padding:12px;margin-bottom:14px;font-size:10px;font-weight:850}.brandTabs{display:flex;gap:7px;overflow:auto;scrollbar-width:none;margin:0 0 13px}.brandTabs::-webkit-scrollbar{display:none}.brandTabs button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-size:9px;font-weight:800}.brandTabs button.active{background:#222;color:#fff}.product{display:grid;grid-template-columns:112px 1fr;gap:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;margin-bottom:12px;align-items:center}.productVisual{height:102px;border-radius:14px;display:grid;place-items:center;font-size:50px;overflow:hidden;position:relative;background:#ddd}.productVisual:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;border:12px solid #ffffff21;right:-20px;top:-20px}.product h3{font-size:11px;margin:0 0 4px}.product p{font-size:9px;color:var(--muted);line-height:1.35;margin:0 0 7px}.productBottom{display:flex;align-items:center;justify-content:space-between}.price{font-size:11px;font-weight:950}.add{border:1px solid #cabde9;color:var(--purple);background:#fff;border-radius:9px;padding:7px 10px;font-size:9px;font-weight:900;cursor:pointer}.add.added{background:var(--purple);color:#fff}.behChoice{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px}.behChoice button{background:#fff;border:1px solid #e3d8c2;border-radius:13px;padding:11px;text-align:left;cursor:pointer;transition:.18s ease}.behChoice button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(44,31,12,.07)}.behChoice button.active{background:#1d1913;border-color:#1d1913;color:#fff}.behChoice button.active span{color:#d9ceb8}.behChoice b{display:block;font-size:10px}.behChoice span{display:block;margin-top:3px;font-size:8px;color:var(--muted)}.behPrompt{display:flex;align-items:center;gap:9px;background:#f7f0e4;border:1px solid #eadcc1;border-radius:13px;padding:10px 11px;margin:0 0 13px}.behPrompt .bpIcon{width:29px;height:29px;border-radius:9px;background:#1d1913;color:#d8b366;display:grid;place-items:center;font-size:14px}.behPrompt .bpCopy{flex:1}.behPrompt b{display:block;font-size:10px;color:#3a2e1c}.behPrompt span{display:block;font-size:8px;line-height:1.35;color:#746952;margin-top:2px}.menuLabel{display:flex;justify-content:space-between;align-items:center;margin:2px 0 9px}.menuLabel h3{font-size:13px;margin:0}.menuLabel span{font-size:8px;color:var(--muted)}.noProducts{background:#fff;border:1px dashed #ded7e6;border-radius:14px;padding:18px;text-align:center;color:var(--muted);font-size:10px}.brandTabs button{cursor:pointer;transition:.15s ease}.brandTabs button.active{background:#222;color:#fff;border-color:#222}
+
+img.food-photo{width:100%;height:100%;object-fit:cover;display:block}
+.restoVisual .food-photo,.bigBrand .art .food-photo,.heroDish .food-photo,.productVisual .food-photo,.ci .food-photo,.si .food-photo{position:absolute;inset:0}
+.heroDish .food-photo{border-radius:inherit}
+.productVisual,.restoVisual,.bigBrand .art,.heroDish,.ci,.si{background-size:cover;background-position:center}
+.productVisual{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.productVisual::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.05));pointer-events:none}
+.restoVisual::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.14));pointer-events:none}
+
+/* search */
+.searchPage{padding:12px 14px}.searchInput{width:100%;height:48px;border:1px solid #d3ccdd;border-radius:13px;padding:0 14px;outline:0;font-size:13px}.results{margin-top:13px}.searchResult{display:flex;gap:10px;background:#fff;border:1px solid var(--line);padding:9px;border-radius:14px;margin-bottom:8px;align-items:center;cursor:pointer}.searchResult .si{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font-size:28px}.searchResult h3{font-size:11px;margin:0}.searchResult p{font-size:9px;color:var(--muted);margin:3px 0 0}.searchResult .arr{margin-left:auto;color:var(--purple);font-weight:900}
+/* profile */
+.profileHero{padding:26px 16px;background:linear-gradient(145deg,#6f45cb,#4a219a);color:#fff}.profileUser{display:flex;align-items:center;gap:12px}.profilePic{width:60px;height:60px;border-radius:50%;background:#fff;color:var(--purple);display:grid;place-items:center;font-size:22px;font-weight:1000}.profileUser h2{margin:0;font-size:18px}.profileUser p{margin:4px 0 0;font-size:10px;color:#ffffffc9}.profileCards{padding:14px}.profileCard{background:#fff;border:1px solid var(--line);border-radius:15px;margin-bottom:10px;padding:13px}.profileCard h3{font-size:11px;margin:0 0 8px}.setting{display:flex;align-items:center;padding:8px 0;border-top:1px solid #f0edf4;font-size:10px}.setting:first-of-type{border-top:0}.setting span:last-child{margin-left:auto;color:var(--purple);font-weight:850}
+/* multi */
+.multiHero{padding:20px 16px;background:linear-gradient(145deg,#f1eaff,#fff)}.multiHero h2{margin:0 0 5px;font-size:21px}.multiHero p{font-size:10px;color:var(--muted);line-height:1.45}.multiBrandStrip{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:12px}.multiBrandStrip button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 4px;font-size:8px;font-weight:850;cursor:pointer}.comboCart{padding:14px}.comboHint{background:#eee7fb;color:#4f3295;border-radius:13px;padding:10px;font-size:9px;line-height:1.4;margin-bottom:10px}.cartItem{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:8px}.cartItem .ci{width:48px;height:48px;border-radius:11px;display:grid;place-items:center;font-size:27px}.cartItem .ct{flex:1}.cartItem h3{font-size:10px;margin:0}.cartItem p{font-size:8px;color:var(--muted);margin:2px 0}.qty{display:flex;align-items:center;gap:6px;font-size:9px;font-weight:900}.qty button{width:24px;height:24px;border-radius:7px;border:1px solid var(--line);background:#fff}.checkout{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px 14px}.checkout button{width:100%;border:0;background:var(--purple);color:#fff;border-radius:12px;padding:13px;font-weight:900;font-size:11px}.empty{padding:60px 30px;text-align:center;color:var(--muted)}.empty .big{font-size:54px}.empty h3{color:var(--ink);font-size:16px;margin:8px 0}.tinyNote{font-size:8px;color:#aaa5b1;text-align:center;margin-top:12px;line-height:1.4}
+
+button{touch-action:manipulation}.brandTabs button,.behChoice button,.nav,.resto,.bigBrand,.brandBubble{position:relative;z-index:3}.food-photo{pointer-events:none}
+</style>
+</head>
+<body>
+<div class="stage"><div class="phone"><div class="app">
+<section id="home" class="screen active">
+  <div class="status"><span>12:25</span><span>▮▮▮ ◉ 57%</span></div>
+  <div class="top">
+    <div class="location"><div class="pin">⌖</div><div class="loc"><b>United Arab Emirates ›</b><span>Dubai · delivery location</span></div><div class="avatar" onclick="showScreen('profile')">D</div></div>
+    <div class="delivery"><div class="chip p">🛵 Get</div><div class="chip">in ~35 mins⌄</div></div>
+    <div class="searchbar" onclick="showScreen('search')">⌕ <span>Search for dishes, brands or cuisines</span></div>
+  </div>
+  <div class="content">
+    <div class="section"><div class="sectionHead"><h2>Popular restaurants</h2><button class="link" onclick="showScreen('restaurants')">See all ›</button></div><div id="popular" class="hscroll"></div></div>
+    <div class="section"><div class="elite"><div class="eliteTitle">EatSure <span>ELITE</span></div><div class="eliteBox"><b style="font-size:11px">AED 85 to your next Elite milestone</b><div class="progress"><span></span></div><div class="eliteBenefits"><div>🛵 FREE DELIVERY<br><small>on eligible orders</small></div><div>🎁 MEMBER PERKS<br><small>across EatSure</small></div></div></div></div></div>
+    <div class="section"><div class="behFeature"><div class="kicker">FEATURED TONIGHT · BEHROUZ BIRYANI</div><h2>Tonight calls for Behrouz.</h2><p>Premium biryani when it is just you — or when the whole group finally makes the plan.</p><div class="btnrow"><button class="btn gold" onclick="openBrand('behrouz','solo')">Order for me</button><button class="btn ghost" onclick="openBrand('behrouz','group')">Build a feast</button></div><div class="behBowl"></div></div></div>
+    <div class="section"><div class="sectionHead"><h2>What’s the plan?</h2><span class="muted">EatSure finds the right brand</span></div><div class="missionGrid"><div class="mission" onclick="openBrand('behrouz','solo')"><div class="mi">🍽️</div><b>Dinner for one</b><span>Fast, simple, premium</span></div><div class="mission" onclick="openBrand('behrouz','group')"><div class="mi">🏠</div><b>Friends coming over</b><span>Build a Behrouz table</span></div><div class="mission" onclick="openBrand('faasos')"><div class="mi">⚡</div><b>Quick bite</b><span>Wraps on the go</span></div><div class="mission" onclick="openBrand('sweettruth')"><div class="mi">🎂</div><b>Something sweet</b><span>Dessert for the moment</span></div></div></div>
+    <div class="section"><div class="sectionHead"><h2>Multi Resto</h2><button class="link" onclick="showScreen('multi')">Explore ›</button></div><div class="multiCard" onclick="showScreen('multi')"><div class="multiLine"><div class="miniLogo" style="background:#1f1b15">B</div><div class="miniLogo" style="background:#d84c35">F</div><div class="miniLogo" style="background:#7d3a88">ST</div><div class="miniLogo" style="background:#0c625c">MO</div><div class="txt"><h3>Build one order across brands</h3><p>Behrouz main + dessert + sides + different cravings</p></div><div class="arrow">›</div></div></div></div>
+    <div class="section"><div class="sectionHead"><h2>Across EatSure</h2><span class="muted">One ecosystem</span></div><div id="ecosystem" class="ecosystem"></div></div>
+    <div class="tinyNote">Concept prototype · illustrative AED pricing and menu architecture for strategy demonstration.</div>
+  </div>
+</section>
+
+<section id="restaurants" class="screen"><div class="pageHead"><button class="back" onclick="showScreen('home')">‹</button><div><h1>Restaurants on EatSure</h1><small>Explore the Rebel Foods ecosystem</small></div></div><div id="restaurantGrid" class="listGrid"></div></section>
+
+<section id="brand" class="screen"><div id="brandHero" class="brandHero"><button class="brandBack" onclick="goBackFromBrand()">‹</button><div class="logo" id="brandLogo"></div><div class="tagline" id="brandTagline"></div><div class="meta" id="brandMeta"></div><div class="heroDish" id="heroDish"></div></div><div class="brandBody"><div id="behrouzChoices"></div><div id="brandOffer" class="offer"></div><div class="brandTabs" id="brandTabs"></div><div class="menuLabel"><h3 id="menuTitle">Menu</h3><span id="menuCount"></span></div><div id="productList"></div><div class="tinyNote">Menu cards now use food photography matched to the selected brand. AED pricing remains illustrative for the prototype.</div></div></section>
+
+<section id="profile" class="screen"><div class="status"><span>12:25</span><span>▮▮▮ ◉ 57%</span></div><div class="profileHero"><div class="profileUser"><div class="profilePic">D</div><div><h2>Deepanshu</h2><p>EatSure UAE member · Dubai</p></div></div></div><div class="profileCards"><div class="profileCard"><h3>EatSure Elite</h3><div class="progress"><span></span></div><div class="muted">AED 85 to the next milestone</div></div><div class="profileCard"><h3>Your account</h3><div class="setting"><span>📍 Saved addresses</span><span>›</span></div><div class="setting"><span>♡ Favourite brands</span><span>›</span></div><div class="setting"><span>🧾 Previous orders</span><span>›</span></div><div class="setting"><span>🌐 Language: English</span><span>›</span></div><div class="setting"><span>⚙ Preferences</span><span>›</span></div></div></div></section>
+
+<section id="multi" class="screen"><div class="pageHead"><button class="back" onclick="showScreen('home')">‹</button><div><h1>Multi Resto</h1><small>Different cravings. One EatSure cart.</small></div></div><div class="multiHero"><h2>Build the whole table.</h2><p>Start with a main brand, then mix desserts, sides, wraps, pizza or Chinese without leaving EatSure.</p><div id="multiBrands" class="multiBrandStrip"></div></div><div class="comboCart"><div class="comboHint">Try the Behrouz route: biryani as the hero, Sweet Truth for dessert, Mandarin Oak for a starter, or Faasos when one guest wants something different.</div><div id="multiSuggestions"></div></div></section>
+
+<section id="search" class="screen"><div class="pageHead"><button class="back" onclick="showScreen('home')">‹</button><div><h1>Search</h1><small>Dishes, restaurants and cuisines</small></div></div><div class="searchPage"><input id="searchInput" class="searchInput" placeholder="Search biryani, wraps, pizza, dessert..." oninput="renderSearch()" autofocus/><div id="searchResults" class="results"></div></div></section>
+
+<section id="cart" class="screen"><div class="pageHead"><button class="back" onclick="showScreen('home')">‹</button><div><h1>Your EatSure cart</h1><small id="cartSubtitle">One cart across restaurants</small></div></div><div id="cartBody" class="comboCart"></div><div id="checkout" class="checkout"><button onclick="placeOrder()">Place order</button></div></section>
+
+<section id="tracking" class="screen"><div class="pageHead"><button class="back" onclick="showScreen('home')">‹</button><div><h1>Order confirmed</h1><small>EatSure UAE</small></div></div><div class="content"><div class="section"><div class="behFeature" style="min-height:165px"><div class="kicker">ORDER STATUS</div><h2 style="font-size:24px">Your table is on the way.</h2><p>Preparing → quality checked → sealed → dispatched.</p></div></div><div class="section"><div class="multiCard"><div class="multiLine"><div style="font-size:30px;font-weight:1000;color:var(--purple)">34</div><div class="txt"><h3>minutes</h3><p>Estimated arrival</p></div><div class="arrow">ON TIME</div></div></div></div><button class="btn" style="width:100%;background:var(--purple);color:#fff;margin-top:15px" onclick="showScreen('home')">Back to EatSure home</button></div></section>
+
+<div class="bottom" id="bottomNav"><div class="nav active" data-target="home" onclick="showScreen('home')"><b>⌂</b>Home</div><div class="nav" data-target="profile" onclick="showScreen('profile')"><b>♙</b>My Profile</div><div class="nav multiNav" data-target="multi" onclick="showScreen('multi')"><b>BUY<br>GET!</b>Multi Resto</div><div class="nav" data-target="search" onclick="showScreen('search')"><b>⌕</b>Search</div><div class="nav" data-target="cart" onclick="showScreen('cart')"><b>🛒</b><span id="cartNav">Cart</span></div></div>
+</div></div></div>
+<script>
+
+const img={
+  beh_chicken:'eatsure_asset_01_ede3a73eeb.png',
+  beh_lamb:'eatsure_asset_02_c8d61f9c37.png',
+  beh_feast:'eatsure_asset_03_14f7a96bb5.png',
+  faasos_wrap:'eatsure_asset_04_f1681cecaa.png',
+  oven_pizza:'eatsure_asset_05_2eb52a70f7.png',
+  mandarin_noodles:'eatsure_asset_06_8e320359fe.png',
+  sweettruth_cake:'eatsure_asset_07_0756b8e88a.png',
+  goodbowl_bowl:'eatsure_asset_08_aa2f2ab53c.png',
+  lunchbox_thali:'eatsure_asset_09_7ffcc15dd0.png',
+  firangi_lasagna:'eatsure_asset_10_c59e863320.png'
+};
+
+const brands={
+  behrouz:{
+    name:'Behrouz Biryani',short:'Behrouz',icon:'🍛',g:'linear-gradient(145deg,#12110f,#4a3822)',accent:'#d2aa5c',cardImg:img.beh_chicken,heroImg:img.beh_feast,
+    tag:'Premium biryani for one plate, two people or the whole table.',meta:'Biryani · Indian · ~35 min',
+    offer:'Start with your occasion. Then pick the right biryani, combo or feast without digging through the full menu.',
+    tabs:['For you','Biryanis','Combos','Feasts','Sides'],
+    products:[
+      {n:'Chicken Biryani',d:'Long-grain basmati, tender chicken and crispy fried onions.',p:'AED 42',i:'🍛',img:img.beh_chicken,cats:['For you','Biryanis'],modes:['solo','two']},
+      {n:'Lamb Biryani',d:'Slow-cooked lamb layered with aromatic basmati rice.',p:'AED 52',i:'🥘',img:img.beh_lamb,cats:['For you','Biryanis'],modes:['solo','two']},
+      {n:'Vegetarian Biryani',d:'Aromatic rice with vegetables and warm whole spices.',p:'AED 34',i:'🍲',img:img.beh_feast,cats:['Biryanis'],modes:['solo','two']},
+      {n:'Chicken Biryani Meal',d:'Chicken biryani with raita and a drink.',p:'AED 49',i:'🥤',img:img.beh_chicken,cats:['For you','Combos'],modes:['solo']},
+      {n:'Dinner for Two',d:'Two biryanis with raita and two drinks.',p:'AED 88',i:'🍽️',img:img.beh_feast,cats:['For you','Combos'],modes:['two']},
+      {n:'Mixed Biryani Duo',d:'One chicken and one lamb biryani with two sides.',p:'AED 94',i:'🥘',img:img.beh_feast,cats:['Combos'],modes:['two']},
+      {n:'Behrouz Feast for 4',d:'Group-ready biryani with raita, salad and serving spoons.',p:'AED 139',i:'🏠',img:img.beh_feast,cats:['For you','Feasts'],modes:['group']},
+      {n:'Behrouz Feast for 6',d:'Larger table format with biryani, sides and easy serving.',p:'AED 189',i:'🍲',img:img.beh_feast,cats:['For you','Feasts'],modes:['group','host']},
+      {n:'Celebration Feast for 8',d:'A fuller hosting spread with biryani, sides and dessert.',p:'AED 249',i:'✨',img:img.beh_feast,cats:['For you','Feasts'],modes:['host']},
+      {n:'Raita & Salad',d:'Cooling raita with a fresh side salad.',p:'AED 10',i:'🥗',img:img.beh_feast,cats:['Sides'],modes:['solo','two','group','host']},
+      {n:'Kebab Starter',d:'Warm starter to open the meal before the biryani.',p:'AED 24',i:'🍢',img:img.beh_feast,cats:['Sides'],modes:['two','group','host']}
+    ]
+  },
+  faasos:{name:'Faasos',short:'Faasos',icon:'🌯',g:'linear-gradient(145deg,#8c2554,#f06f34)',accent:'#f17736',cardImg:img.faasos_wrap,heroImg:img.faasos_wrap,tag:'Wraps and quick meals built for a fast lunch or a late-night bite.',meta:'Wraps · Shawarmas · Rice bowls · ~30 min',offer:'Pick a wrap for the commute, a shawarma for a quick bite, or a bowl when you want something fuller.',tabs:['Best sellers','Classic Wraps','Shawarmas','Bowls'],products:[
+    {n:'Chicken Tikka Wrap',d:'Smoky chicken, fresh crunch and signature sauce.',p:'AED 24',i:'🌯',img:img.faasos_wrap,cats:['Best sellers','Classic Wraps']},
+    {n:'Cheese Melt Paneer Wrap',d:'Paneer, melted cheese and bold masala.',p:'AED 22',i:'🌯',img:img.faasos_wrap,cats:['Classic Wraps']},
+    {n:'Smoky Chicken Shawarma',d:'Juicy chicken, creamy garlic sauce and pickles.',p:'AED 23',i:'🥙',img:img.faasos_wrap,cats:['Best sellers','Shawarmas']},
+    {n:'Signature Rice Bowl',d:'A hearty bowl for when a wrap is not enough.',p:'AED 27',i:'🍚',img:img.faasos_wrap,cats:['Bowls']}
+  ]},
+  ovenstory:{name:'Oven Story Pizza',short:'Oven Story',icon:'🍕',g:'linear-gradient(145deg,#4d2c23,#df9d2f)',accent:'#e0a133',cardImg:img.oven_pizza,heroImg:img.oven_pizza,tag:'Bold pizzas for nights that call for cheese and shareable sides.',meta:'Pizza · Italian-inspired · ~35 min',offer:'Choose your pizza first, then add an easy side for the table.',tabs:['Recommended','Veg Pizzas','Chicken Pizzas','Sides'],products:[
+    {n:'Peri Peri Chicken Pizza',d:'Spicy chicken, peppers and a rich cheese base.',p:'AED 38',i:'🍕',img:img.oven_pizza,cats:['Recommended','Chicken Pizzas']},
+    {n:'Farmhouse Cheese Pizza',d:'Vegetables, herbs and generous cheese.',p:'AED 34',i:'🍕',img:img.oven_pizza,cats:['Recommended','Veg Pizzas']},
+    {n:'Tandoori Paneer Pizza',d:'Indian-spiced paneer with onions and capsicum.',p:'AED 36',i:'🍕',img:img.oven_pizza,cats:['Veg Pizzas']},
+    {n:'Garlic Bread',d:'Toasted, buttery and built for sharing.',p:'AED 15',i:'🥖',img:img.oven_pizza,cats:['Sides']}
+  ]},
+  mandarin:{name:'Mandarin Oak',short:'Mandarin Oak',icon:'🍜',g:'linear-gradient(145deg,#063f3c,#da7437)',accent:'#e27a39',cardImg:img.mandarin_noodles,heroImg:img.mandarin_noodles,tag:'Wok-tossed Chinese built for comfort, speed and sharing.',meta:'Chinese · Noodles · Wok meals · ~35 min',offer:'Go straight to noodles, rice or a starter — whatever the craving is.',tabs:['Recommended','Noodles','Rice','Starters'],products:[
+    {n:'Chilli Garlic Noodles',d:'Wok-tossed noodles with garlic, chilli and vegetables.',p:'AED 27',i:'🍜',img:img.mandarin_noodles,cats:['Recommended','Noodles']},
+    {n:'Kung Pao Chicken Rice',d:'Sweet-spicy chicken with steamed rice.',p:'AED 32',i:'🍚',img:img.mandarin_noodles,cats:['Recommended','Rice']},
+    {n:'Crispy Chilli Chicken',d:'Crunchy starter with peppers and sauce.',p:'AED 29',i:'🥢',img:img.mandarin_noodles,cats:['Starters']},
+    {n:'Veg Manchurian Bowl',d:'Comforting Chinese-style bowl meal.',p:'AED 25',i:'🥣',img:img.mandarin_noodles,cats:['Rice']}
+  ]},
+  sweettruth:{name:'Sweet Truth',short:'Sweet Truth',icon:'🍰',g:'linear-gradient(145deg,#55255f,#d8759f)',accent:'#d8759f',cardImg:img.sweettruth_cake,heroImg:img.sweettruth_cake,tag:'Dessert for celebrations, cravings and everything in between.',meta:'Desserts · Cakes · Cheesecake · ~30 min',offer:'Pick a full cake for the table or a single serve when the craving is yours alone.',tabs:['Best sellers','Cakes','Cheesecakes','Single serve'],products:[
+    {n:'New York Cheesecake',d:'Creamy cheesecake with a buttery base.',p:'AED 24',i:'🍰',img:img.sweettruth_cake,cats:['Best sellers','Cheesecakes','Single serve']},
+    {n:'Chocolate Truffle Cake',d:'Rich chocolate layers for celebrations or cravings.',p:'AED 28',i:'🎂',img:img.sweettruth_cake,cats:['Best sellers','Cakes']},
+    {n:'Red Velvet Slice',d:'Soft red velvet with cream-cheese frosting.',p:'AED 22',i:'🍰',img:img.sweettruth_cake,cats:['Single serve']},
+    {n:'Chocolate Mousse',d:'Silky single-serve chocolate dessert.',p:'AED 18',i:'🍮',img:img.sweettruth_cake,cats:['Single serve']}
+  ]},
+  goodbowl:{name:'The Good Bowl',short:'Good Bowl',icon:'🥗',g:'linear-gradient(145deg,#0b5c55,#7bc6a7)',accent:'#56aa8a',cardImg:img.goodbowl_bowl,heroImg:img.goodbowl_bowl,tag:'Complete meals packed into one bowl.',meta:'Bowls · Fusion · Desi · ~30 min',offer:'Choose the flavour profile you are in the mood for — desi comfort, protein-forward or global.',tabs:['Recommended','Protein Bowls','Desi Bowls','Fusion'],products:[
+    {n:'Chicken Tikka Rice Bowl',d:'Chicken tikka, rice, gravy and fresh toppings.',p:'AED 29',i:'🥗',img:img.goodbowl_bowl,cats:['Recommended','Protein Bowls','Desi Bowls']},
+    {n:'Paneer Makhani Bowl',d:'Creamy paneer with rice and crunchy garnish.',p:'AED 27',i:'🥣',img:img.goodbowl_bowl,cats:['Desi Bowls']},
+    {n:'Teriyaki Chicken Bowl',d:'Sweet-savoury chicken with vegetables and rice.',p:'AED 31',i:'🍱',img:img.goodbowl_bowl,cats:['Recommended','Protein Bowls','Fusion']},
+    {n:'Rajma Rice Bowl',d:'Classic comfort in a convenient bowl.',p:'AED 23',i:'🍚',img:img.goodbowl_bowl,cats:['Desi Bowls']}
+  ]},
+  lunchbox:{name:'LunchBox',short:'LunchBox',icon:'🍱',g:'linear-gradient(145deg,#8d332d,#e6a53b)',accent:'#e0a03c',cardImg:img.lunchbox_thali,heroImg:img.lunchbox_thali,tag:'Familiar Indian meals designed for a reliable lunch break.',meta:'Indian meals · Thalis · Lunch · ~30 min',offer:'Complete lunch combinations without having to build the meal piece by piece.',tabs:['Lunch favourites','Thalis','Rice meals','Combos'],products:[
+    {n:'North Indian Thali',d:'Dal, sabzi, rice, breads and accompaniments.',p:'AED 29',i:'🍱',img:img.lunchbox_thali,cats:['Lunch favourites','Thalis']},
+    {n:'Rajma Chawal Meal',d:'Kidney bean curry with steamed rice.',p:'AED 23',i:'🍛',img:img.lunchbox_thali,cats:['Lunch favourites','Rice meals']},
+    {n:'Paneer Meal Box',d:'Paneer gravy, rice, roti and side.',p:'AED 28',i:'🥘',img:img.lunchbox_thali,cats:['Combos']},
+    {n:'Chicken Home-style Meal',d:'Comfort chicken curry with rice and bread.',p:'AED 31',i:'🍱',img:img.lunchbox_thali,cats:['Combos']}
+  ]},
+  firangi:{name:'Firangi Bake',short:'Firangi Bake',icon:'🧀',g:'linear-gradient(145deg,#3f1d2b,#c95e54)',accent:'#cf6658',cardImg:img.firangi_lasagna,heroImg:img.firangi_lasagna,tag:'Cheesy bakes and pastas with a desi edge.',meta:'Bakes · Pasta · Lasagne · ~35 min',offer:'Choose your comfort format: lasagne, pasta or an oven-baked favourite.',tabs:['Recommended','Lasagne','Pasta','Bakes'],products:[
+    {n:'Chicken Tikka Lasagne',d:'Creamy baked layers with chicken tikka flavour.',p:'AED 34',i:'🧀',img:img.firangi_lasagna,cats:['Recommended','Lasagne','Bakes']},
+    {n:'Paneer Tikka Mac & Cheese',d:'Cheesy pasta with smoky paneer.',p:'AED 31',i:'🍝',img:img.firangi_lasagna,cats:['Recommended','Pasta']},
+    {n:'Butter Chicken Pasta',d:'Pasta meets rich butter-chicken sauce.',p:'AED 33',i:'🍝',img:img.firangi_lasagna,cats:['Pasta']},
+    {n:'Loaded Veg Bake',d:'Cheesy vegetables baked until golden.',p:'AED 28',i:'🥘',img:img.firangi_lasagna,cats:['Bakes']}
+  ]}
+};
+
+let currentBrand='behrouz', brandSource='home', currentTab='For you', behMode='solo';
+let cart=[];
+const ids=Object.keys(brands);
+const behModes={
+  solo:{label:'Just for me',sub:'1 serving',icon:'🍽️',prompt:'Quick pick',detail:'Choose one biryani, then add a side or drink if you want.'},
+  two:{label:'For two',sub:'2 servings',icon:'🍽️',prompt:'Easy for two',detail:'Pick two favourites or choose a ready-made combo.'},
+  group:{label:'Friends & family',sub:'3–6 people',icon:'🏠',prompt:'Feed the table',detail:'Choose a feast by group size, then add sides only if you need them.'},
+  host:{label:'Hosting',sub:'7+ people',icon:'✨',prompt:'Plan the spread',detail:'Larger feast formats with sides and a clearer serving plan.'}
+};
+
+function photoBox(url,fallback,alt=''){
+  return url ? `<img class="food-photo" src="${url}" alt="${alt}">` : `<div class="foodIcon">${fallback||''}</div>`;
+}
+
+function renderBrandCards(){
+  const popular=['behrouz','faasos','ovenstory','sweettruth'];
+  document.getElementById('popular').innerHTML=popular.map(id=>restoCard(id)).join('');
+  document.getElementById('ecosystem').innerHTML=ids.map(id=>`<div class="brandBubble" onclick="openBrand('${id}')"><div class="ico" style="background:${brands[id].g}">${brands[id].icon}</div><span>${brands[id].short}</span></div>`).join('');
+  document.getElementById('restaurantGrid').innerHTML=ids.map(id=>{
+    const b=brands[id];
+    return `<div class="bigBrand" onclick="openBrand('${id}','', 'restaurants')"><div class="art" style="background:${b.g}">${photoBox(b.cardImg,b.icon,b.name)}</div><div class="body"><h3>${b.name}</h3><p>${b.meta}</p></div></div>`
+  }).join('');
+  document.getElementById('multiBrands').innerHTML=ids.map(id=>`<button onclick="addSuggested('${id}')">${brands[id].icon}<br>${brands[id].short}</button>`).join('');
+  renderMultiSuggestions();
+}
+
+function restoCard(id){
+  const b=brands[id];
+  return `<div class="resto" onclick="openBrand('${id}')"><div class="restoVisual" style="background:${b.g}">${photoBox(b.cardImg,b.icon,b.name)}<div class="restoBadge">${id==='behrouz'?'Popular tonight':'~30–35 min'}</div></div><div class="restoCopy"><h3>${b.name}</h3><p>${b.meta}</p></div></div>`
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const target=document.getElementById(id); if(!target)return;
+  target.classList.add('active'); target.scrollTop=0;
+  document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.target===id));
+  if(id==='search')setTimeout(()=>document.getElementById('searchInput').focus(),80);
+  if(id==='cart')renderCart();
+}
+
+function openBrand(id,mode='',source='home'){
+  currentBrand=id; brandSource=source||'home';
+  if(id==='behrouz') behMode=mode||'solo';
+  currentTab=brands[id].tabs[0];
+  renderBrand(id);
+  showScreen('brand');
+  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));
+}
+
+function goBackFromBrand(){
+  if(brandSource==='restaurants')return showScreen('restaurants');
+  if(brandSource==='search')return showScreen('search');
+  if(brandSource==='multi')return showScreen('multi');
+  showScreen('home');
+}
+
+function renderBrand(id){
+  const b=brands[id];
+  const hero=document.getElementById('brandHero'); hero.style.background=b.g;
+  document.getElementById('brandLogo').textContent=b.name;
+  document.getElementById('brandTagline').textContent=b.tag;
+  document.getElementById('brandMeta').textContent=b.meta;
+  document.getElementById('heroDish').innerHTML=photoBox(b.heroImg,b.icon,b.name);
+  const off=document.getElementById('brandOffer');
+  off.textContent=b.offer; off.style.background=b.accent+'18'; off.style.color='#3d3448';
+
+  const c=document.getElementById('behrouzChoices');
+  if(id==='behrouz'){
+    c.innerHTML=`<div class="behChoice">${Object.entries(behModes).map(([key,m])=>`<button class="${key===behMode?'active':''}" onclick="setBehMode('${key}')"><b>${m.icon} ${m.label}</b><span>${m.sub}</span></button>`).join('')}</div><div id="behModeNote"></div>`;
+    renderBehPrompt();
+  } else c.innerHTML='';
+
+  renderTabs();
+  renderProducts();
+}
+
+function renderTabs(){
+  const b=brands[currentBrand];
+  const tabs=document.getElementById('brandTabs');
+  tabs.innerHTML=b.tabs.map(t=>`<button class="${t===currentTab?'active':''}" onclick="setBrandTab('${escapeJs(t)}')">${t}</button>`).join('');
+}
+function escapeJs(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
+function setBrandTab(tab){currentTab=tab;renderTabs();renderProducts();}
+function setBehMode(mode){behMode=mode;currentTab='For you';document.querySelectorAll('.behChoice button').forEach((btn,i)=>btn.classList.toggle('active',Object.keys(behModes)[i]===mode));renderBehPrompt();renderTabs();renderProducts();}
+function renderBehPrompt(){const n=document.getElementById('behModeNote'); if(!n)return; const m=behModes[behMode]; n.innerHTML=`<div class="behPrompt"><div class="bpIcon">${m.icon}</div><div class="bpCopy"><b>${m.prompt}</b><span>${m.detail}</span></div></div>`}
+
+function visibleProducts(){
+  const b=brands[currentBrand];
+  return b.products.map((p,i)=>({...p,_i:i})).filter(p=>{
+    const tabOk=p.cats.includes(currentTab);
+    if(!tabOk)return false;
+    if(currentBrand==='behrouz' && currentTab==='For you') return !p.modes || p.modes.includes(behMode);
+    return true;
+  });
+}
+
+function renderProducts(){
+  const b=brands[currentBrand];
+  const products=visibleProducts();
+  document.getElementById('menuTitle').textContent=currentBrand==='behrouz' && currentTab==='For you' ? behModes[behMode].label : currentTab;
+  document.getElementById('menuCount').textContent=`${products.length} ${products.length===1?'item':'items'}`;
+  const list=document.getElementById('productList');
+  if(!products.length){list.innerHTML=`<div class="noProducts">Nothing in this section yet. Try another tab.</div>`;return;}
+  list.innerHTML=products.map(p=>`<div class="product"><div class="productVisual">${photoBox(p.img||b.cardImg,p.i,p.n)}</div><div><h3>${p.n}</h3><p>${p.d}</p><div class="productBottom"><span class="price">${p.p}</span><button class="add" onclick="addToCart('${currentBrand}',${p._i},this)">+ Add</button></div></div></div>`).join('');
+}
+
+function addToCart(id,i,btn){
+  const p=brands[id].products[i];
+  const existing=cart.find(x=>x.id===id&&x.i===i);
+  if(existing)existing.qty++; else cart.push({id,i,qty:1});
+  if(btn){btn.classList.add('added');btn.textContent='Added ✓';setTimeout(()=>{btn.classList.remove('added');btn.textContent='+ Add'},850)}
+  updateCartNav();
+}
+function addSuggested(id){addToCart(id,0);renderMultiSuggestions()}
+function updateCartNav(){const q=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('cartNav').textContent=q?`Cart · ${q}`:'Cart'}
+
+function renderMultiSuggestions(){
+  const picks=['behrouz','sweettruth','mandarin','faasos'];
+  document.getElementById('multiSuggestions').innerHTML=picks.map(id=>{const b=brands[id],p=b.products[0];return `<div class="cartItem"><div class="ci" style="background:${b.g};overflow:hidden;position:relative">${photoBox(p.img||b.cardImg,p.i,p.n)}</div><div class="ct"><h3>${b.name}</h3><p>${p.n} · ${p.p}</p></div><button class="add" onclick="addToCart('${id}',0,this)">+ Add</button></div>`}).join('');
+}
+
+function renderSearch(){
+  const q=document.getElementById('searchInput').value.toLowerCase().trim(); let res=[];
+  ids.forEach(id=>{const b=brands[id];
+    if(!q||b.name.toLowerCase().includes(q)||b.meta.toLowerCase().includes(q)||b.tag.toLowerCase().includes(q))res.push({type:'brand',id,label:b.name,sub:b.meta,icon:b.icon,g:b.g,img:b.cardImg});
+    b.products.forEach((p,i)=>{if(q&&(p.n.toLowerCase().includes(q)||p.d.toLowerCase().includes(q)))res.push({type:'product',id,i,label:p.n,sub:`${b.name} · ${p.p}`,icon:p.i,g:b.g,img:p.img||b.cardImg})})
+  });
+  document.getElementById('searchResults').innerHTML=res.slice(0,16).map(r=>`<div class="searchResult" onclick="openBrand('${r.id}','', 'search')"><div class="si" style="background:${r.g};position:relative;overflow:hidden">${photoBox(r.img,r.icon,r.label)}</div><div><h3>${r.label}</h3><p>${r.sub}</p></div><div class="arr">›</div></div>`).join('')||`<div class="empty"><div class="big">⌕</div><h3>No match yet</h3><p>Try biryani, wraps, pizza, dessert, bowls or Chinese.</p></div>`;
+}
+
+function renderCart(){
+  const body=document.getElementById('cartBody'), checkout=document.getElementById('checkout');
+  if(!cart.length){
+    body.innerHTML=`<div class="empty"><div class="big">🛒</div><h3>Your cart is empty</h3><p>Build one order across EatSure brands.</p><button class="btn" style="background:var(--purple);color:#fff;margin-top:8px" onclick="showScreen('home')">Explore restaurants</button></div>`;
+    checkout.style.display='none'; document.getElementById('cartSubtitle').textContent='One cart across restaurants'; return;
+  }
+  checkout.style.display='block';
+  body.innerHTML=cart.map((x,idx)=>{const b=brands[x.id],p=b.products[x.i];return `<div class="cartItem"><div class="ci" style="background:${b.g};overflow:hidden;position:relative">${photoBox(p.img||b.cardImg,p.i,p.n)}</div><div class="ct"><h3>${p.n}</h3><p>${b.name} · ${p.p}</p></div><div class="qty"><button onclick="changeQty(${idx},-1)">−</button>${x.qty}<button onclick="changeQty(${idx},1)">+</button></div></div>`}).join('')+`<div class="comboHint">One EatSure basket can combine dishes from different Rebel Foods brands.</div>`;
+  document.getElementById('cartSubtitle').textContent=`${cart.reduce((a,b)=>a+b.qty,0)} item(s) · multi-brand eligible`;
+}
+
+function changeQty(idx,d){cart[idx].qty+=d;if(cart[idx].qty<=0)cart.splice(idx,1);updateCartNav();renderCart()}
+function placeOrder(){if(!cart.length)return;cart=[];updateCartNav();showScreen('tracking')}
+
+renderBrandCards();renderSearch();updateCartNav();
+
+</script>
+</body></html>
